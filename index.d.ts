@@ -38,6 +38,7 @@ export { default as Link } from './types/Link/Link';
 export { default as List } from './types/List/List';
 export { default as LocalizationEditor } from './types/LocalizationEditor/LocalizationEditor';
 export { default as Menu } from './types/Menu/Menu';
+export { default as MessageBox } from './types/MessageBox/MessageBox';
 export { default as MessageStrip } from './types/MessageStrip/MessageStrip';
 export { default as MultiInput } from './types/MultiInput/MultiInput';
 export { default as ObjectStatus } from './types/ObjectStatus/ObjectStatus';

@@ -38,6 +38,8 @@ class Shellbar extends Component {
             totalNotifications: this.getNotificationsSum(),
             showCollapsedProductSwitchMenu: false
         };
+        this.poRefProfileMenu = React.createRef();
+        this.poRefProductSwitch = React.createRef();
     }
 
     backBtnHandler = () => {
@@ -103,6 +105,14 @@ class Shellbar extends Component {
             }
         } else {
             return additionalActionsSum;
+        }
+    };
+
+    handlePopoverClick = (e, poRef, callback) => {
+        const popover = poRef && poRef.current;
+        popover && popover.handleEscapeKey();
+        if (typeof callback === 'function') {
+            callback(e);
         }
     };
 
@@ -381,13 +391,13 @@ class Shellbar extends Component {
                                         profileMenu && (
                                             <Menu>
                                                 <Menu.List>
-                                                    <Menu.Item>{profile.userName}</Menu.Item>
+                                                    <Menu.Item onClick={e => this.handlePopoverClick(e, this.poRefProfileMenu, profile.callback)}>{profile.userName}</Menu.Item>
                                                     {profileMenu.map((item, index) => {
                                                         return (
                                                             <Menu.Item
                                                                 key={index}
                                                                 link={item.link}
-                                                                onClick={item.callback}
+                                                                onClick={e => this.handlePopoverClick(e, this.poRefProfileMenu, item.callback)}
                                                                 url={item.url} >
                                                                 {item.glyph && (
                                                                     <React.Fragment>
@@ -432,7 +442,8 @@ class Shellbar extends Component {
                                         </button>
                                     }
                                     noArrow
-                                    popperProps={{ id: `${cssNamespace}-shellbar-profile-popover` }} />
+                                    popperProps={{ id: `${cssNamespace}-shellbar-profile-popover` }}
+                                    ref={this.poRefProfileMenu} />
                             </div>
                         </div>
                     )}
@@ -450,7 +461,7 @@ class Shellbar extends Component {
                                                         <li
                                                             className={classnames(`${cssNamespace}-product-switch__item`, { selected: item.selected })}
                                                             key={index}
-                                                            onClick={item.callback}>
+                                                            onClick={e => this.handlePopoverClick(e, this.poRefProductSwitch, item.callback)}>
                                                             <div className={classnames(`${cssNamespace}-product-switch__icon`, `sap-icon--${item.glyph}`)} />
                                                             <div className={classnames(`${cssNamespace}-product-switch__text`)}>
                                                                 <div className={classnames(`${cssNamespace}-product-switch__title`)}>
@@ -473,7 +484,8 @@ class Shellbar extends Component {
                                         className={classnames(`${cssNamespace}-button--transparent`, `${cssNamespace}-product-switch__control`, `${cssNamespace}-shellbar__button`, { [`${cssNamespace}-button`]: isUsingCssModules })}
                                         glyph='grid' />}
                                     disableEdgeDetection
-                                    popperProps={{ id: `${cssNamespace}-shellbar-product-switch-popover` }} />
+                                    popperProps={{ id: `${cssNamespace}-shellbar-product-switch-popover` }}
+                                    ref={this.poRefProductSwitch} />
                             </div>
                         </div>
                     )}
@@ -514,14 +526,14 @@ Shellbar.propTypes = {
      * Additional props to be spread to the popovers of the action menu, collapsed mobile menu, notifications menu, product menu,
      * product switch popover and the profile menu.
      * */
-    popoverPropsFor: {
+    popoverPropsFor: PropTypes.shape({
         actionMenu: PropTypes.object,
         collapsedMobileMenu: PropTypes.object,
         notifications: PropTypes.object,
         productMenu: PropTypes.object,
         productSwitch: PropTypes.object,
         profileMenu: PropTypes.object
-    },
+    }),
     /** Holds product titles and navigation */
     productMenu: PropTypes.array,
     /** For navigating between products. An object that contains an accessible and localized label for product switch button. */
