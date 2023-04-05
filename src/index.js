@@ -36,6 +36,7 @@ export { default as MultiInput } from './MultiInput/MultiInput';
 export { default as ObjectStatus } from './ObjectStatus/ObjectStatus';
 export { default as Pagination } from './Pagination/Pagination';
 export { default as Popover } from './Popover/Popover';
+export { default as ProgressIndicator } from './ProgressIndicator/ProgressIndicator';
 export { default as Row } from './LayoutGrid/Row';
 export { default as SearchInput } from './SearchInput/SearchInput';
 export { default as Select } from './Select/Select';
