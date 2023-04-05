@@ -70,6 +70,7 @@ export type ShellbarProps = {
     productTitle?: string | undefined;
     profile?: { [x: string]: any } | undefined;
     profileMenu?: Array<{ [x: string]: any }> | undefined;
+    popoverPropsFor?: { [x: string]: any };
     searchInput?: { [x: string]: any } | undefined;
     subtitle?: string | undefined;
 } & React.HTMLAttributes<Element>;

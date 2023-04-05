@@ -115,7 +115,7 @@ const getPopperClasses2 = (cssBlock, placement, noArrow)=> {
 
 const defaultModifiers = [
     {
-        name: 'computeStyle',
+        name: 'computeStyles',
         phase: 'main',
         options: {
             gpuAcceleration: false
