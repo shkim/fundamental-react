@@ -1,6 +1,6 @@
 {
   "name": "@hanaqa/fundamental-react",
-  "version": "0.14.5-rc.12a",
+  "version": "0.14.5-rc.12b",
   "private": false,
   "description": "SAP Fundamental Library, implemented in React",
   "license": "Apache-2.0",

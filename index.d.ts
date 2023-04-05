@@ -44,6 +44,7 @@ export { default as MultiInput } from './types/MultiInput/MultiInput';
 export { default as ObjectStatus } from './types/ObjectStatus/ObjectStatus';
 export { default as Pagination } from './types/Pagination/Pagination';
 export { default as Popover } from './types/Popover/Popover';
+export { default as ProgressIndicator } from './types/ProgressIndicator/ProgressIndicator';
 export { default as SearchInput } from './types/SearchInput/SearchInput';
 export { default as Select } from './types/Select/Select';
 export { default as Shellbar } from './types/Shellbar/Shellbar';
